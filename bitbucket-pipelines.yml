@@ -1,0 +1,55 @@
+#  Template python-build
+
+#  This template allows you to validate your python code.
+#  The workflow allows running tests and code linting on the default branch.
+
+image: python:3.9
+
+pipelines:
+  pull-requests:
+    "**":
+      - parallel:
+          - step:
+              name: Django Tests
+              caches:
+                - pip
+                - poetry
+              script:
+                - pip install poetry
+                - poetry config virtualenvs.create false
+                - poetry install --no-interaction
+                - python manage.py migrate
+                - pytest -v --junitxml=test-reports/report.xml
+              services:
+                - postgres
+          - step:
+              name: Linter
+              caches:
+                - pip
+                - poetry
+              script:
+                - pip install poetry
+                - poetry config virtualenvs.create false
+                - poetry add pylint pylint-django pylint-pytest
+                - pylint config apps --load-plugins pylint_django --load-plugins pylint_pytest --django-settings-module=config.settings --rcfile=.pylintrc --fail-under=8
+          - step:
+              name: Check Code Format
+              caches:
+                - pip
+                - poetry
+              script:
+                - pip install poetry
+                - poetry config virtualenvs.create false
+                - poetry add black isort
+                - black apps config --check
+                - isort apps config --check
+definitions:
+  services:
+    postgres:
+      image: postgres:12
+      variables:
+        POSTGRES_DB: "pipeline"
+        POSTGRES_USER: "pipeline"
+        POSTGRES_PASSWORD: "pipeline"
+  caches:
+    poetry: ~/.cache/pypoetry
