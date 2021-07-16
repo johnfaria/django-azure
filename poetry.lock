@@ -167,6 +167,17 @@ python-versions = ">=3.5"
 django = ">=2.2"
 
 [[package]]
+name = "djhtml"
+version = "1.4.9"
+description = "Django/Jinja template indenter"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+dev = ["black", "flake8", "isort", "nox", "pre-commit"]
+
+[[package]]
 name = "iniconfig"
 version = "1.1.1"
 description = "iniconfig: brain-dead simple config-ini parsing"
@@ -577,7 +588,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "49ccf7525beb192595ad8c92c1fc7ce7001f2be74e7c08f30881426cb3df748a"
+content-hash = "96ea690594a684d6aa1ea0ea0c74fd8d96cfcf6e3540a12dcb537f73f6d12580"
 
 [metadata.files]
 appdirs = [
@@ -689,6 +700,9 @@ django-extensions = [
 djangorestframework = [
     {file = "djangorestframework-3.12.4-py3-none-any.whl", hash = "sha256:6d1d59f623a5ad0509fe0d6bfe93cbdfe17b8116ebc8eda86d45f6e16e819aaf"},
     {file = "djangorestframework-3.12.4.tar.gz", hash = "sha256:f747949a8ddac876e879190df194b925c177cdeb725a099db1460872f7c0a7f2"},
+]
+djhtml = [
+    {file = "djhtml-1.4.9.tar.gz", hash = "sha256:f71a9b7b139caacb16edb0ba0fc10ddc72b12c692d71cda0a515e0a7cdc50b52"},
 ]
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
