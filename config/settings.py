@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "apps.core",
     "apps.accounts",
     "apps.shop",
+    "apps.cart",
 ]
 
 MIDDLEWARE = [
@@ -157,3 +158,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.BasicAuthentication",
     ),
 }
+
+# Sessions
+
+CART_SESSION_ID = "cart"
