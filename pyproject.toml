@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "company-manager"
+name = "django"
 version = "0.1.0"
 description = ""
-authors = ["Ateliware - Lojacorr"]
+authors = ["johnwbf@hotmail.com"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
